@@ -23,5 +23,6 @@ class User(BaseModel):
     sex = Column(type_=String(length=6), nullable=False, default="male")
     latitude = Column(type_=Float, nullable=False)
     longitude = Column(type_=Float, nullable=False)
+    matches = Column(type_=Integer, default=5)
     registration_date = Column(type_=DateTime, server_default=func.now())
     

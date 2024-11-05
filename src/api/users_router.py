@@ -34,3 +34,10 @@ async def create_user(
     except IntegrityError:
         raise HTTPException(status_code=400, detail=f"User with e-mail {request.e_mail} already exist!")
     
+    
+@router.post("/{matcher_id}/match")
+async def match_user(
+    matcher_id: int, 
+    target_id: int
+) -> None:
+    pass

@@ -9,6 +9,7 @@ from settings import get_settings
 
 from models import BaseModel
 from models import User
+from models import Match
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

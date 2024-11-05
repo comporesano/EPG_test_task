@@ -49,4 +49,3 @@ async def watermark_put(original_img,
     
     return wmarked_arr.read()
     
-    

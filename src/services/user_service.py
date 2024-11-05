@@ -1,15 +1,15 @@
-import select
-from sqlalchemy import delete, insert, update
+from sqlalchemy import delete, insert, update, select
 from sqlalchemy.exc import IntegrityError
 
-from models import User
+from functools import lru_cache
 
+from models import User
 from db import asm
 
 
 class UserOperatingService:
-    """CDU(Create, delete, update) service"""
-    def __init__(self):
+    """CDU(Create, delete, update) user service"""
+    def __init__(self) -> None:
         self._session = asm()
         self.__model = User
         
@@ -18,6 +18,7 @@ class UserOperatingService:
             query = insert(self.__model).values(**data).returning(self.__model.id)
             result = await self._session.execute(query)
             await self._session.commit()
+            
             return result
         except IntegrityError:
             raise
@@ -92,5 +93,6 @@ class UserOperatingService:
         return result
     
 
+@lru_cache
 def user_operating_service() -> UserOperatingService:
     return UserOperatingService()
