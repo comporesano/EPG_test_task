@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "epg-test-task"
+version = "0.1.0"
+description = "Test task for EPG"
+authors = ["Roman Bakharev <romabakharev@icloud.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.32.3"
+fastapi = {extras = ["all"], version = "^0.115.4"}
+alembic = "^1.14.0"
+psycopg = "^3.2.3"
+psycopg2 = "^2.9.10"
+asyncpg = "^0.30.0"
+pillow = "^11.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

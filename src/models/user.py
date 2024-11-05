@@ -1,4 +1,12 @@
-from sqlalchemy import Column, Integer, LargeBinary, String
+from sqlalchemy import (
+    Column, 
+    DateTime, 
+    Float, 
+    Integer,
+    LargeBinary,
+    String, 
+    func
+    )
 
 from .base import BaseModel
 
@@ -13,4 +21,7 @@ class User(BaseModel):
     first_name = Column(type_=String(length=10), nullable=False)
     last_name = Column(type_=String(length=15), nullable=False)
     sex = Column(type_=String(length=6), nullable=False, default="male")
+    latitude = Column(type_=Float, nullable=False)
+    longitude = Column(type_=Float, nullable=False)
+    registration_date = Column(type_=DateTime, server_default=func.now())
     
