@@ -25,12 +25,14 @@ class SmtpService:
             msg["Subject"] = msg_title
             msg["From"] = source_mail
             msg["To"] = target_mail
-            with self.__driver as smtp:
-                smtp.send_message(msg=msg)
+            smtp.send_message(msg=msg)
         except Exception:
             return False
         else:
             return True
+
+    def close(self):
+        self.__driver.close()
 
 
 @lru_cache
