@@ -50,6 +50,7 @@ class MatchOperatingService:
                             message=f"Вы понравились {matcher_user.first_name}! Почта участника: {matcher_user.e_mail}"
                         )
                         break
+                smtps.close()
             else:
                 raise
     
