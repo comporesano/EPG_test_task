@@ -52,6 +52,8 @@ class UserListRequestScheme(UserBase):
 
     @field_validator('sortion_field', mode="after")
     def validate_sex(cls, value) -> str:
+        if not value:
+            return
         return value.value
     
 

@@ -6,7 +6,9 @@ from sqlalchemy.exc import IntegrityError
 
 from schemas import UserCreateResponseScheme, UserCreateScheme, MatchCreateScheme
 from services import UserOperatingService, user_operating_service, MatchOperatingService, match_service
-from utils import watermark_put
+from utils import watermark_put, GLOBAL_PATH
+
+import os
 
 
 router = APIRouter(prefix="/api/clients", tags=["Enpoints for clients operating"])
@@ -23,7 +25,7 @@ async def create_user(
         wmarked_image = await watermark_put(avatar_data,
                                             "EPG API",
                                             (3, 8, 12),
-                                            'Pillow/Tests/fonts/FreeMono.ttf',
+                                            os.path.join(GLOBAL_PATH, "src", "assets", "arkhip.ttf"),
                                             128,
                                             (0, 0))
         result = await uos.add_one({
