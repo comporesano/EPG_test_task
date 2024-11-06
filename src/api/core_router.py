@@ -23,7 +23,7 @@ async def main_redirect():
 async def get_clients_list(
     uos: Annotated[UserOperatingService, Depends(user_operating_service)],
     request: UserListRequestScheme = Depends()
-) -> list[list, UserUnitListResponseScheme]:
+) -> list[list, UserUnitListResponseScheme] | list[UserUnitListResponseScheme]:
     print(request)
     result = await uos.get()
     result = result.scalars().all()
@@ -42,4 +42,5 @@ async def get_clients_list(
                 dist_res.append(user)
                 distances[user.id] = dist
         result = copy(dist_res)
-    return [[distances], [UserUnitListResponseScheme(**user.__dict__) for user in result]]
+        result.append(distances )
+    return [UserUnitListResponseScheme(**user.__dict__) for user in result]
