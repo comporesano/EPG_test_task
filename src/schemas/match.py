@@ -6,6 +6,9 @@ class MatchBase(BaseModel):
     """Match base scheme"""
     pass
 
+    class Config:
+        orm_mode = True 
+
 
 class MatchCreateScheme(MatchBase):
     """Create match scheme"""

@@ -47,15 +47,16 @@ class MatchOperatingService:
                             source_mail=get_settings().MAIL_LOGIN,
                             target_mail=matcher_user.e_mail,
                             msg_title="У Вас взаимная симпатия!",
-                            message=f"Вы понравились {matcher_user.first_name}! Почта участника: {matcher_user.e_mail}"
+                            message=f"Вы понравились {target_user.first_name}! Почта участника: {target_user.e_mail}"
                         )
                         break
-                smtps.close()
             else:
                 raise
     
     async def get(self, matcher_id: int):
-        query = select(self.__model).where(getattr(self.__model, "matcher_id") == matcher_id)
+        query = select(self.__model)
+        if matcher_id:
+            query = query.where(getattr(self.__model, "matcher_id") == matcher_id)
         result = await self._session.execute(query)
         return result
     

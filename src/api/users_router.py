@@ -9,7 +9,7 @@ from services import UserOperatingService, user_operating_service, MatchOperatin
 from utils import watermark_put
 
 
-router = APIRouter(prefix="/clients", tags=["Enpoints for clients operating"])
+router = APIRouter(prefix="/api/clients", tags=["Enpoints for clients operating"])
 
 @router.post("/create")
 async def create_user(

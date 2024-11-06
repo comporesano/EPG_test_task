@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     MAIL_LOGIN: str
     MAIL_PASSW: str
         
-    model_config = SettingsConfigDict(env_file=os.path.join(GLOBAL_PATH, "src", ".env"), 
+    model_config = SettingsConfigDict(env_file=os.path.join(GLOBAL_PATH, ".env"), 
                                       extra="ignore")
     
 

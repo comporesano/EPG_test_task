@@ -25,7 +25,7 @@ class SmtpService:
             msg["Subject"] = msg_title
             msg["From"] = source_mail
             msg["To"] = target_mail
-            smtp.send_message(msg=msg)
+            self.__driver.send_message(msg=msg)
         except Exception:
             return False
         else:
