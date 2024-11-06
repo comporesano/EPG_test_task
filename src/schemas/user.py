@@ -25,6 +25,10 @@ class UserCreateScheme(UserBase):
             return value.value
         return value
     
+    @field_validator('e_mail', mode="before")
+    def validate_email(cls, value: str) -> str:
+        return value.lower()
+    
 
 class UserCreateResponseScheme(UserBase):
     """Response status od creation scheme"""

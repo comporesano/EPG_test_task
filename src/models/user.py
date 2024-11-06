@@ -24,5 +24,6 @@ class User(BaseModel):
     latitude = Column(type_=Float, nullable=False)
     longitude = Column(type_=Float, nullable=False)
     matches = Column(type_=Integer, default=5)
+    matches_update = Column(type_=DateTime, server_default=func.now())
     registration_date = Column(type_=DateTime, server_default=func.now())
     

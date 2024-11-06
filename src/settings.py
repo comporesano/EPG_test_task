@@ -14,8 +14,8 @@ class Settings(BaseSettings):
     DB_HOST: str 
     DB_PORT: str 
     DB_NAME: str
-    GMAIL_LOGIN: str
-    GMAIL_PASSW: str
+    MAIL_LOGIN: str
+    MAIL_PASSW: str
         
     model_config = SettingsConfigDict(env_file=os.path.join(GLOBAL_PATH, "src", ".env"), 
                                       extra="ignore")

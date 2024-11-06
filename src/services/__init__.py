@@ -6,3 +6,7 @@ from .smtp_service import (
     SmtpService,
     smtp_service,
 )
+from .match_service import (
+    MatchOperatingService,
+    match_service
+)

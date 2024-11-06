@@ -87,7 +87,7 @@ class UserOperatingService:
             [result_list, error_list],
         ))
     
-    async def get_one(self, id: int):
+    async def get(self, id: int):
         query = select(self.__model).where(getattr(self.__model, "id") == id)
         result = await self._session.execute(query)
         return result

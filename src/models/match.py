@@ -4,7 +4,6 @@ from sqlalchemy import (
     ForeignKey,
 )
 
-from services import smtp_service
 from .user import User
 from .base import BaseModel
 

@@ -3,3 +3,6 @@ from .user import (
     UserCreateScheme,
     UserCreateResponseScheme,
 )
+from .match import (
+    MatchCreateScheme,
+)
