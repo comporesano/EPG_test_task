@@ -41,8 +41,7 @@ async def match_user(
     ms: Annotated[MatchOperatingService, Depends(match_service)],
     request: MatchCreateScheme = Depends()
 ):
-    # try:
-    await ms.add_one(request.__dict__)
-    # except Exception as e:
-    #     print(e)
-    #     raise HTTPException(status_code=400, detail="Unexpected error during matching other user")
+    try:
+        await ms.add_one(request.__dict__)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Unexpected error: <{str(e)}> during matching other user")
