@@ -40,4 +40,4 @@ async def get_clients_list(
                 dist_res.append((user, dist))
         result = copy(dist_res)
         return [UserUnitListResponseScheme(**{**user.__dict__, "distance_for_target": dist}) for user, dist in result]
-    return [UserUnitListResponseScheme({**user.__dict__}) for user in result]
+    return [UserUnitListResponseScheme(**user.__dict__) for user in result]
