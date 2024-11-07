@@ -21,6 +21,7 @@ class UserOperatingService:
             
             return result
         except IntegrityError:
+            await self._session.rollback()
             raise
 
     async def add_list(self, list_data: list[dict]) -> dict[str, list[int]]:
@@ -59,7 +60,9 @@ class UserOperatingService:
         try:
             query = delete(self.__model)
             await self._session.execute(query)
+            await self._session.commit()
         except Exception:
+            await self._session.rollback()
             raise
     
     async def update_one(self, id: int, data: dict) -> int:
@@ -69,6 +72,7 @@ class UserOperatingService:
             await self._session.commit()
             return result
         except IntegrityError:
+            await self._session.rollback()
             raise
     
     async def update_list(self, list_to_update: dict[int, dict]) -> dict[str, list]:
